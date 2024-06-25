@@ -1,0 +1,36 @@
+THIS DOCUMENT IS AN UNOFFICIAL INSTRUCTIONS AND TIP RESOURCE
+
+Installing from scratch (macOS)
+1. Python environment:
+    - Within the top directory of the app (cs428-scheduler) type:
+        python -m venv env
+        source env/bin/activate
+    - You should now be in the environment (env)
+    - Within env type:
+        pip install flask
+        pip install flask_pymongo
+        pip install flask_login
+        pip install flask_bcrypt
+    - This should conclude dependencies but OPTIONAL to type:
+        pip install -r App/requirements.txt
+    - At this point the flask web application can be run, type:
+        python App/app.py
+    - Go to 'http://localhost:5000'
+    - Register a user!
+
+2. Docker and MongoDB
+    - Download the docker desktop (https://www.docker.com/products/docker-desktop/)
+      and run it.
+    - Verify install by typing in a new terminal:
+        docker --version
+    - Next, to run the MongoDB container, type:
+        docker pull mongo
+        docker run -d -p 27017:27017 --name mongodb mongo
+    - Now to enter the MongoDB bash, type:
+        docker exec -it mongodb bash
+    - This should take you to the MongoDB bash and look like "root@something...", type:
+        mongosh
+    - If it says something like "test>" then you're in! Switch to app.py's database:
+        use Scheduler
+        show collections
+    - If you registered a user on the web app, then "users" should be present! You did it!

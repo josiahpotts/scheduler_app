@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Admin Dashboard</title>
+		<link rel="stylesheet" href="/static/inside.css">
+
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="#">
+					ORTSOC Scheduler
+				</a>
+			</div>
+			<div class="navbar-menu">
+				<div class="navbar-start">
+					<a class="navbar-item" href="{{ url_for('dashboard')  }}">
+						Dashboard
+					</a>
+					<a class="navbar-item" href="{{ url_for('submit')  }}">
+						Submit Schedule
+					</a>
+					<a class="navbar-item" href="{{ url_for('view_schedule')  }}">
+						View Schedule
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Banner -->
+		<section class="hero is-primary">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">
+						ORTSOC Scheduler
+					</h1>
+					<h2 class="subtitle">
+						Admin Dashboard
+					</h2>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Dashboard</h1>
+				<p>Welcome, {{ user.username  }}!</p>
+				<div class="box">
+					<h2 class="subtitle">Manage Schedules</h2>
+					{% if user.status == 'admin' %}
+					<!-- Admin management tools here -->
+					<form action="{{ url_for('generate_schedule')  }}" method="post">
+						<button class="button is-primary" type="submit">Generate Schedule</button>
+					</form>
+					{% else %}
+					<!-- Student-specific content here -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Day Of Week</th>
+								<th>Time</th>
+								<th>Location</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Example rows, you would typically loop through schedule data -->
+							<tr>
+								<td>Monday</td>
+								<td>9:00 AM - 10:00 AM</td>
+								<td>Room 101</td>
+							</tr>
+							<tr>
+								<td>Tuesday</td>
+								<td>10:30 AM - 11:30 AM</td>
+								<td>Room 202</td>
+							</tr>
+						</tbody>
+					</table>
+					{% endif %}
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Schedule</title>
+    <link rel="stylesheet" href="/static/inside.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                ORTSOC Scheduler
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+		    <a class="navbar-item" href="{{ url_for('dashboard') }}">
+			    Dashboard
+		    </a>
+		    <a class="navbar-item" href="{{ url_for('submit') }}">
+			    Submit Schedule
+		    </a>
+		    <a class="navbar-item" href="{{ url_for('view_schedule') }}">
+			    View Schedule
+		    </a>
+	    </div>
+	</div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    ORTSOC Scheduler
+                </h1>
+                <h2 class="subtitle">
+                    Submit Schedule
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Submit Schedule</h1>
+            <form class="form" action="/submit" method="POST">
+                <div class="field">
+                    <label class="label" for="day">Day</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="day" id="day">
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="inTime">In Time</label>
+                    <div class="control">
+                        <input type="time" class="input" id="inTime" name="inTime">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="outTime">Out Time</label>
+                    <div class="control">
+                        <input type="time" class="input" id="outTime" name="outTime">
+                    </div>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-primary">Submit</button>
+                </div>
+            </form>            
+        </div>
+    </section>
+</body>
+</html>

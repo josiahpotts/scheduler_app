@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Generate Schedule</title>
+		<link rel="stylesheet" href="/static/inside.css">
+
+		<script>
+			// Automatically submit the form to trigger schedule generation
+			window.onload = function() {
+				document.getElementById('generate-form').submit();
+
+			};
+		</script>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="#">
+					ORTSOC Scheduler
+				</a>
+			</div>
+			<div class="navbar-menu">
+				<div class="navbar-start">
+					<a class="navbar-item" href="{{ url_for('dashboard')  }}">
+						Dashboard
+					</a>
+					<a class="navbar-item" href="{{ url_for('submit')  }}">
+						Submit Schedule
+					</a>
+					<a class="navbar-item" href="{{ url_for('view_schedule')  }}">
+						View Schedule
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Banner -->
+		<section class="hero is-primary">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">
+						ORTSOC Scheduler
+					</h1>
+					<h2 class="subtitle">
+						Generating Schedule
+					</h2>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<div class="box">
+					<h2 class="subtitle">Please wait while the schedule is being generated...</h2>
+					<form id="generate-form" action="{{ url_for('generate_schedule_complete')  }}" method="post">
+						<button class="button is-primary" type="submit" style="display:none;">Generate Schedule</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+
